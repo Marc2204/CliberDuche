@@ -283,7 +283,6 @@ body {
   border-top: 3px solid #4af034;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   body {
     padding-top: 80px;
