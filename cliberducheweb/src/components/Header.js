@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CliberLogo from "../assets/CliberLogo.jpeg";
+import "./Header.css";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -8,6 +9,7 @@ const Header = () => {
   const navItems = [
     { name: "HOME", id: "home" },
     { name: "SERVICES", id: "services" },
+    { name: "MISSION & VISION", id: "mission-vision" },
     { name: "ABOUT US", id: "about-us" },
     { name: "CONTACT", id: "contact" },
   ];

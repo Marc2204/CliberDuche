@@ -18,12 +18,7 @@
   background: linear-gradient(90deg, transparent, #475569, transparent);
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
+/* Container styles moved to App.css for consistency */
 
 .section-title-contact {
   text-align: center;

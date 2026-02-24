@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './AboutUs.css';
-import OrgChartImage from '../assets/OrgChart.png'; // Imported here
+import OrgChartImage from '../assets/OrgChart.png';
 
 const AboutUs = () => {
   
@@ -20,7 +20,7 @@ const AboutUs = () => {
 
   return (
     <section className="about-section" id="about-us">
-      <div className="container">
+      <div className="about-container">
         <h2 className="section-title">ABOUT US</h2>
         <div className="about-content">
           <div className="about-text">
@@ -56,6 +56,7 @@ const AboutUs = () => {
           {showOrgChart && (
             <div className="org-chart-modal">
               <div className="org-chart-content">
+                <button id='org-close' onClick={handleClose}>Close</button>
 
                 <h3>Organizational Chart</h3>
 
@@ -64,12 +65,12 @@ const AboutUs = () => {
                   alt="Organizational Chart"
                   className="org-chart-image"
                 />
-                
-                <button onClick={handleClose}>Close</button>
-              
+             
               </div>
             </div>
           )}
+           
+
         </div>
       </div>
     </section>
