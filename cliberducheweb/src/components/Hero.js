@@ -5,7 +5,6 @@ const Hero = () => {
   const [displayText, setDisplayText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
   const [showCursor, setShowCursor] = useState(true);
-  const [hasAnimated, setHasAnimated] = useState(false);
   const heroRef = useRef(null);
   
   const fullText = "The Company was established in 2018, CLIBERDUCHE CORPORATION was born out of the dream of a person to provide the best for his family without leaving the country anymore. This person found this opportunity in the wide field of the construction business. Immediately, he invited his friends to join him and officially registered CLIBERDUCHE CORPORATION was registered with the Securities and Exchange Commission on as November 28, 2018.";
@@ -19,20 +18,20 @@ const Hero = () => {
             // Reset the typing animation
             setDisplayText('');
             setIsTyping(true);
-            setHasAnimated(true);
           }
         });
       },
       { threshold: 0.3 } // Trigger when 30% of the component is visible
     );
 
-    if (heroRef.current) {
-      observer.observe(heroRef.current);
+    const currentRef = heroRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (heroRef.current) {
-        observer.unobserve(heroRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);

@@ -73,13 +73,14 @@ const Services = () => {
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
     // Observe each service item
-    serviceRefs.current.forEach(ref => {
+    const currentRefs = serviceRefs.current;
+    currentRefs.forEach(ref => {
       if (ref) observer.observe(ref);
     });
 
     // Cleanup
     return () => {
-      serviceRefs.current.forEach(ref => {
+      currentRefs.forEach(ref => {
         if (ref) observer.unobserve(ref);
       });
     };
