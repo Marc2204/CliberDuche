@@ -1,11 +1,16 @@
 /* Hero.css */
 .hero {
+  position: relative;
+  min-height: 100vh;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 40px 5%;
-  background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-  min-height: 85.1vh;
+  justify-content: flex-start;
+  padding: 2rem;
+  background-image: url('../assets/Home.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   margin-top: 0;
 }
 
@@ -28,19 +33,6 @@
   color: #ecf0f1;
   line-height: 1.6;
   margin-bottom: 30px;
-}
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; /* Changed from space-between to align content left */
-  padding: 2rem;
-  background-image: url('../assets/Home.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* Optional: creates parallax effect */
 }
 
 /* Overlay to ensure text readability */

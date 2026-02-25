@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd cliberducheweb && npm run build",
+  "outputDirectory": "cliberducheweb/build",
+  "framework": "create-react-app"
+}
