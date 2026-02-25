@@ -1,7 +1,11 @@
-.mission-vision-content {
-    display: flex;
-    gap: 40px;
-    margin-top: 20px;
+.mission-content, .vision-content {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.mission-content {
+    margin-bottom: 60px;
 }
 
 .mission-text, .vision-text {
@@ -12,6 +16,7 @@
     font-size: 22px;
     opacity: 0;
     transition: all 0.8s ease;
+    position: relative;
 }
 
 /* Initial positions - hidden */
@@ -23,8 +28,45 @@
     transform: translateX(100px);
 }
 
-/* Visible state */
-.mission-text.visible, .vision-text.visible {
+/* Mission visible - first scroll */
+.mission-text.visible {
     opacity: 1;
     transform: translateX(0);
+}
+
+/* Vision visible while mission slides out */
+.vision-text.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Mission slides out when vision becomes visible */
+.vision-text.visible ~ .mission-text,
+.mission-content:has(.vision-text.visible) .mission-text {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 0.8s ease;
+}
+
+/* Vision slides out - when scrolled past */
+.mission-content:not(:has(.mission-text.visible)):not(:has(.vision-text.visible)) .vision-text {
+    opacity: 0;
+    transform: translateX(-100px);
+}
+/* Additional CSS for sliding out states */
+.mission-text.sliding-out {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 0.8s ease;
+}
+
+.vision-text.sliding-out {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: all 0.8s ease;
+}
+
+/* Ensure smooth transitions */
+.mission-text, .vision-text {
+    transition: all 0.8s ease;
 }
