@@ -2,7 +2,7 @@
 
 .about-section {
   padding: 120px 5%;
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+ background: radial-gradient(circle, #44e95f 20%, #318af0);
   position: relative;
   overflow: hidden;
 }
