@@ -190,11 +190,37 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  animation: fadeOverlay 0.4s ease forwards;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+}
+
+@keyframes fadeOverlay {
+  to { opacity: 1; }
+}
+
+/* animation when modal opens */
+.org-chart-content {
+  background: rgba(255, 255, 255, 0.986);
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 90%;
+  max-height: 90vh;
+  overflow: auto;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  transform-origin: center center;
+}
+
+.org-chart-modal.open .org-chart-content {
+  transform: scale(1);
+  opacity: 1;
 }
 
 .org-chart-content {
@@ -208,6 +234,8 @@
 
 .org-chart-button{
   display: inline-block;
+  position: relative;
+  overflow: hidden;
   padding: 12px 24px;
   background: linear-gradient(135deg, #318af0, #44e95f);
   color: white;
@@ -215,8 +243,45 @@
   border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  /* smooth, slower transition for background and transform */
+  transition: background 0.6s ease, transform 0.6s ease;
   margin-top: 10px;
+}
+
+/* liquid-glass shine effect */
+.org-chart-button::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255,255,255,0.3);
+  transform: rotate(45deg);
+  filter: blur(30px);
+  transition: all 0.6s ease;
+  opacity: 0;
+}
+
+.org-chart-button:hover{
+  background: linear-gradient(135deg, #44e95f, #318af0);
+  /* zoom-in effect */
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.4);
+  animation: pulse 0.6s ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1.05); }
+  50% { transform: scale(1.07); }
+  100% { transform: scale(1.05); }
+}
+
+.org-chart-button:hover::after {
+  opacity: 1;
+  top: 0;
+  left: 0;
+  transform: rotate(45deg) translate(50%, 50%);
 }
 
 #org-close{

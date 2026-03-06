@@ -54,7 +54,7 @@ const AboutUs = () => {
           </button>
 
           {showOrgChart && (
-            <div className="org-chart-modal">
+            <div className={`org-chart-modal ${showOrgChart ? 'open' : ''}`}>
               <div className="org-chart-content">
                 <button id='org-close' onClick={handleClose}>Close</button>
 

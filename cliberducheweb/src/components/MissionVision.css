@@ -1,8 +1,12 @@
 .mission-vision-section {
     padding: 120px 5%;
-    
     position: relative;
     overflow: hidden;
+      background-image: url('../assets/mission.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .mission-content, .vision-content {
@@ -10,6 +14,36 @@
     margin: 0 auto;
     max-width: 1200px;
     margin-bottom: 60px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* liquid glass inner shine */
+.mission-content::before,
+.vision-content::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255,255,255,0.3);
+    transform: rotate(45deg);
+    filter: blur(40px);
+    transition: all 1s ease;
+    opacity: 0;
+}
+
+.mission-content:hover::before,
+.vision-content:hover::before {
+    opacity: 1;
+    top: 0;
+    left: 0;
+    transform: rotate(45deg) translate(50%,50%);
 }
 
 .mission-content {
@@ -23,7 +57,6 @@
 /* Base styles for text blocks */
 .mission-text, .vision-text {
     flex: 1;
-    background-color: #f9f9f9;
     padding: 20px;
     border-radius: 8px;
     font-size: 22px;
@@ -33,16 +66,25 @@
 }
 
 /* Initial off-screen positions */
-.mission-text {
+.mission-text, .mission-content {
     transform: translateX(-100px);
 }
-.vision-text {
+.vision-text, .vision-content {
     transform: translateX(100px);
 }
 
 /* Visible state: slide in to center */
 .mission-text.visible,
-.vision-text.visible {
+.vision-text.visible,
+.mission-content.visible,
+.vision-content.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Ensure text becomes visible when parent container does */
+.mission-content.visible .mission-text,
+.vision-content.visible .vision-text {
     opacity: 1;
     transform: translateX(0);
 }
